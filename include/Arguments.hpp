@@ -113,6 +113,9 @@ public:
     /// \copydoc LengthInterval
     std::optional<LengthInterval> length;
 
+    /// Mask for password recovery, alternative to bruteforce and length
+    std::optional<std::vector<std::vector<std::uint8_t>>> mask;
+
     /// Starting point for password recovery
     std::string recoveryStart;
 
@@ -143,6 +146,7 @@ private:
     auto resolveCharset(const std::string& rawCharset) -> std::bitset<256>;
 
     std::optional<std::string> m_rawBruteforce;
+    std::optional<std::string> m_rawMask;
 
     auto finished() const -> bool;
 
@@ -171,6 +175,7 @@ private:
         bruteforce,
         length,
         recoverPassword,
+        mask,
         charset,
         recoveryStart,
         jobs,
