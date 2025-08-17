@@ -146,13 +146,56 @@ and finally make a copy of the modified archive back with the original encryptio
 ### Recover password
 
 Given the internal keys, bkcrack can try to find the original password.
-You can look for a password up to a given length using a given character set:
 
-    bkcrack -k 1ded830c 24454157 7213b8c5 -r 10 ?p
+#### Bruteforce password recovery
 
-You can be more specific by specifying a minimal password length:
+You can look for a password using characters in a given charset:
 
-    bkcrack -k 18f285c6 881f2169 b35d661d -r 11..13 ?p
+    bkcrack -k 1ded830c 24454157 7213b8c5 -b ?p
+
+You can restrict the search to passwords of a given length or a range of lengths:
+
+    bkcrack -k 1ded830c 24454157 7213b8c5 -b ?p -l 9
+    bkcrack -k 1ded830c 24454157 7213b8c5 -b ?p -l 8..10
+
+Option `-r <length> <charset>` is a shortcut for `-l 0..<length> -b <charset>`:
+
+    bkcrack -k 18f285c6 881f2169 b35d661d -r 10 ?p
+
+#### Mask-based password recovery
+
+If you have some knowledge about how the password is formed, you can specify a mask to restrict the search space and make the recovery much faster.
+This is relevant for long passwords (such as those with 12 or more characters) for which bruteforce becomes very time-consuming.
+
+For example, assuming you vaguely remember that your password is made of 8 lowercase letters, an hyphen and 6 decimal digits, you can use this command:
+
+    bkcrack -k 1940e266 d3fd3d89 71ce9871 -m ?l?l?l?l?l?l?l?l-?d?d?d?d?d?d
+
+This runs in milliseconds, whereas the bruteforce alternative takes hours.
+
+#### Character sets
+
+The search space for both bruteforce and mask-based password recovery is defined with charsets.
+A charset is a sequence of characters or shortcuts for existing charsets.
+Predefined charsets are listed below.
+
+Shortcut | Description                | Value
+---------|----------------------------|---------------------------------------
+ `?l`    | lowercase letters          | `abcdefghijklmnopqrstuvwxyz`
+ `?u`    | uppercase letters          | `ABCDEFGHIJKLMNOPQRSTUVWXYZ`
+ `?d`    | decimal digits             | `0123456789`
+ `?s`    | special characters         | `` !"#$%&'()*+,-./:;<=>?@[\]^_`{\|}~``
+ `?a`    | alpha-numerical characters | same as `?l?u?d`
+ `?p`    | printable ASCII characters | same as `?l?u?d?s`
+ `?b`    | all bytes                  | `0x00` .. `0xff`
+
+In addition to predefined charsets, you can define custom charsets with the `-s` option.
+Custom charsets can reference predefined charsets or other custom charsets.
+Custom charsets are especially useful for precise specification of the mask-based recovery search space.
+
+For example, if you know your password is made of 10 letters (uppercase or lowercase) and 5 binary digits, you can use this command:
+
+    bkcrack -k b8c377a6 f603160f 1832a78b -m ?x?x?x?x?x?x?x?x?x?x?y?y?y?y?y -s x ?u?l -s y 01
 
 Learn
 -----
