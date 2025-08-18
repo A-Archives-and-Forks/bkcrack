@@ -124,6 +124,9 @@ You can now open `very_good_advice.jpg` and enjoy it!
 As shown above, the original password is not required to decrypt data.
 The internal keys are enough.
 However, we might also be interested in finding the original password.
+
+## Bruteforce password recovery
+
 To do this, we need to choose a maximum length and a set of characters among which we hope to find those that constitute the password.
 To save time, we have to choose those parameters wisely.
 For a given length, a small charset will be explored much faster than a big one, but making a wrong assumption by choosing a charset that is too small will not allow to recover the password.
@@ -170,3 +173,36 @@ Now, let us assume the password is made of 12 alpha-numerical characters.
 
 Tada! We made the right assumption for this case.
 The password was recovered quickly from the keys.
+
+## Mask-based password recovery
+
+This case was easy enough, but some passwords are too long for bruteforce to be viable.
+For such long passwords, it is worth trying to restrict the search space.
+Instead of using the same charset to draw all characters, we can specify a charset for each character in the password.
+This sequence of charsets is the mask.
+The mask must be chosen carefully to be large enough to contain the password but small enough to be explored in a reasonable amount of time.
+
+Here is an example.
+Assume a known-plaintext attack gave us the keys `b8c377a6 f603160f 1832a78b`.
+Now we want to find the password.
+Lucky for us, we remember vaguely that our password is made of 10 letters (uppercase or lowercase) and 5 binary digits.
+
+Recovering the password with bruteforce could take *days*:
+
+    $ ../bkcrack -k b8c377a6 f603160f 1832a78b --bruteforce ?u?l01 --length 15
+
+Instead, we can take advantage of our partial knowledge of the password to significantly narrow down the search space:
+
+    $ ../bkcrack -k b8c377a6 f603160f 1832a78b --mask ?x?x?x?x?x?x?x?x?x?x?y?y?y?y?y -s x ?u?l -s y 01
+
+    [17:56:08] Recovering password
+    Password: VerySecret01011
+    82.9 % (1379 / 1664)
+    Found a solution. Stopping.
+    You may resume the password recovery with the option: --continue-recovery 313130313062414141
+    [17:56:08] Password
+    as bytes: 56 65 72 79 53 65 63 72 65 74 30 31 30 31 31
+    as text: VerySecret01011
+
+This command searches for a password where the first 10 characters are from charset `?x` (a custom charset defined as `?u?l` for uppercase or lowercase letters) and the next 5 characters are from charset `?y` (a custom charset defined as `01` for binary digits).
+In this example, restricting the search space that way makes the recovery run and find the password in milliseconds.
