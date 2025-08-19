@@ -548,15 +548,7 @@ auto Zip::Iterator::operator++(int) -> Zip::Iterator
 }
 
 Zip::Zip(std::istream& stream)
-: m_file{}
-, m_is{stream}
-, m_centralDirectoryOffset{findCentralDirectoryOffset(m_is)}
-{
-}
-
-Zip::Zip(const std::string& filename)
-: m_file{openInput(filename)}
-, m_is{*m_file}
+: m_is{stream}
 , m_centralDirectoryOffset{findCentralDirectoryOffset(m_is)}
 {
 }

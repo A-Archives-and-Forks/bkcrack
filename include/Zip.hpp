@@ -4,7 +4,7 @@
 #include "Keys.hpp"
 #include "Progress.hpp"
 
-#include <fstream>
+#include <istream>
 #include <optional>
 
 /// \brief Open a zip archive, parse zip entries metadata and read raw content
@@ -129,11 +129,6 @@ public:
     /// \exception Error if the given input stream is not a valid zip archive
     explicit Zip(std::istream& stream);
 
-    /// \brief Open a zip archive from a file
-    /// \exception FileError if the file cannot be opened
-    /// \exception Error if the opened file is not a valid zip archive
-    explicit Zip(const std::string& filename);
-
     /// Get an iterator pointing to the first entry
     auto begin() const -> Iterator
     {
@@ -176,9 +171,8 @@ public:
     void decrypt(std::ostream& os, const Keys& keys, Progress& progress) const;
 
 private:
-    std::optional<std::ifstream> m_file; // optionally own the stream
-    std::istream&                m_is;
-    const std::uint64_t          m_centralDirectoryOffset;
+    std::istream&       m_is;
+    const std::uint64_t m_centralDirectoryOffset;
 };
 
 /// Decipher at most \a size bytes from \a is into \a os with the given keys.

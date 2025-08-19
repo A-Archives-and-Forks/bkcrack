@@ -210,7 +210,8 @@ auto Arguments::loadData() const -> Data
     auto plaintext = std::vector<std::uint8_t>{};
     if (plainArchive)
     {
-        const auto archive = Zip{*plainArchive};
+        auto       stream  = openInput(*plainArchive);
+        const auto archive = Zip{stream};
         const auto entry   = plainFile ? archive[*plainFile] : archive[*plainIndex];
         Zip::checkEncryption(entry, Zip::Encryption::None);
         plaintext = archive.load(entry, plainFilePrefix);
@@ -232,7 +233,8 @@ auto Arguments::loadData() const -> Data
     auto extraPlaintextWithCheckByte = std::optional<std::map<int, std::uint8_t>>{};
     if (cipherArchive)
     {
-        const auto archive = Zip{*cipherArchive};
+        auto       stream  = openInput(*cipherArchive);
+        const auto archive = Zip{stream};
         const auto entry   = cipherFile ? archive[*cipherFile] : archive[*cipherIndex];
         Zip::checkEncryption(entry, Zip::Encryption::Traditional);
         ciphertext = archive.load(entry, needed);

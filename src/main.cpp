@@ -266,7 +266,8 @@ try
     {
         std::cout << "[" << put_time << "] Writing decrypted archive " << *args.decryptedArchive << std::endl;
 
-        auto encrypted = Zip{*args.cipherArchive};
+        auto stream    = openInput(*args.cipherArchive);
+        auto encrypted = Zip{stream};
         auto decrypted = openOutput(*args.decryptedArchive);
 
         auto progress = ConsoleProgress{std::cout};
@@ -282,7 +283,8 @@ try
                   << newPassword << "\"" << std::endl;
 
         {
-            const auto archive  = Zip{*args.cipherArchive};
+            auto       stream   = openInput(*args.cipherArchive);
+            const auto archive  = Zip{stream};
             auto       unlocked = openOutput(unlockedArchive);
 
             auto progress = ConsoleProgress{std::cout};
@@ -300,7 +302,8 @@ try
                   << std::endl;
 
         {
-            const auto archive  = Zip{*args.cipherArchive};
+            auto       stream   = openInput(*args.cipherArchive);
+            const auto archive  = Zip{stream};
             auto       unlocked = openOutput(unlockedArchive);
 
             auto progress = ConsoleProgress{std::cout};
@@ -446,7 +449,8 @@ auto getCompressionDescription(Zip::Compression compression) -> std::string
 
 void listEntries(const std::string& archiveFilename)
 {
-    const auto archive = Zip{archiveFilename};
+    auto       stream  = openInput(archiveFilename);
+    const auto archive = Zip{stream};
 
     std::cout << "Archive: " << archiveFilename << "\n"
               << "Index Encryption Compression CRC32    Uncompressed  Packed size Name\n"
