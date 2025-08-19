@@ -23,12 +23,6 @@ auto loadStream(std::istream& is, std::size_t size) -> std::vector<std::uint8_t>
     return content;
 }
 
-auto loadFile(const std::string& filename, std::size_t size) -> std::vector<std::uint8_t>
-{
-    auto is = openInput(filename);
-    return loadStream(is, size);
-}
-
 auto openOutput(const std::string& filename) -> std::ofstream
 {
     if (auto os = std::ofstream{filename, std::ios::binary})

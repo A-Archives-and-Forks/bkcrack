@@ -216,7 +216,10 @@ auto Arguments::loadData() const -> Data
         plaintext = archive.load(entry, plainFilePrefix);
     }
     else if (plainFile)
-        plaintext = loadFile(*plainFile, plainFilePrefix);
+    {
+        auto stream = openInput(*plainFile);
+        plaintext   = loadStream(stream, plainFilePrefix);
+    }
 
     // load ciphertext needed by the attack
     auto needed = Data::encryptionHeaderSize;
@@ -241,7 +244,10 @@ auto Arguments::loadData() const -> Data
         }
     }
     else
-        ciphertext = loadFile(*cipherFile, needed);
+    {
+        auto stream = openInput(*cipherFile);
+        ciphertext  = loadStream(stream, needed);
+    }
 
     return {std::move(ciphertext), std::move(plaintext), offset, extraPlaintextWithCheckByte.value_or(extraPlaintext)};
 }
