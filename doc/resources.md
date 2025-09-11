@@ -147,4 +147,4 @@ Resources {#resources}
 
   Python script telling which encryption method is used in a ZIP file.
 
-  License: CC0 / Public Domain
+  License: 0BSD
