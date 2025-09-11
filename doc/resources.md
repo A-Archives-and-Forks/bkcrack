@@ -143,6 +143,14 @@ Resources {#resources}
 
   License: zlib
 
+- [madler/spoof](https://github.com/madler/spoof)
+
+  Modify a message to have a desired CRC signature.
+
+  It can be used to reconstruct a plaintext file if only a few bytes are unknown using the CRC-32 checksum.
+
+  License: zlib
+
 - [hannob/zipeinfo](https://github.com/hannob/zipeinfo)
 
   Python script telling which encryption method is used in a ZIP file.
