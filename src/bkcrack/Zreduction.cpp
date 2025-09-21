@@ -1,8 +1,8 @@
-#include "Zreduction.hpp"
+#include "bkcrack/Zreduction.hpp"
 
-#include "Attack.hpp"
-#include "Crc32Tab.hpp"
-#include "KeystreamTab.hpp"
+#include <bkcrack/Attack.hpp>
+#include <bkcrack/Crc32Tab.hpp>
+#include <bkcrack/KeystreamTab.hpp>
 
 #include <algorithm>
 #include <bitset>

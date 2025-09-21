@@ -1,7 +1,7 @@
 #ifndef BKCRACK_KEYSTREAMTAB_HPP
 #define BKCRACK_KEYSTREAMTAB_HPP
 
-#include "types.hpp"
+#include <bkcrack/types.hpp>
 
 #include <bitset>
 

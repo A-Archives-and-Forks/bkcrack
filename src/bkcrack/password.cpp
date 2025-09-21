@@ -1,8 +1,8 @@
-#include "password.hpp"
+#include "bkcrack/password.hpp"
 
-#include "Crc32Tab.hpp"
-#include "MultTab.hpp"
-#include "log.hpp"
+#include <bkcrack/Crc32Tab.hpp>
+#include <bkcrack/MultTab.hpp>
+#include <bkcrack/log.hpp>
 
 #include <algorithm>
 #include <atomic>

@@ -1,9 +1,9 @@
 #ifndef BKCRACK_ARGUMENTS_HPP
 #define BKCRACK_ARGUMENTS_HPP
 
-#include "Data.hpp"
-#include "Keys.hpp"
-#include "types.hpp"
+#include <bkcrack/Data.hpp>
+#include <bkcrack/Keys.hpp>
+#include <bkcrack/types.hpp>
 
 #include <limits>
 #include <map>

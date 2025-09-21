@@ -1,7 +1,7 @@
 #include "Arguments.hpp"
 
-#include "Zip.hpp"
-#include "file.hpp"
+#include <bkcrack/Zip.hpp>
+#include <bkcrack/file.hpp>
 
 #include <algorithm>
 #include <bitset>

@@ -1,6 +1,6 @@
-#include "log.hpp"
+#include "bkcrack/log.hpp"
 
-#include "Keys.hpp"
+#include <bkcrack/Keys.hpp>
 
 #include <ctime>
 #include <iomanip>

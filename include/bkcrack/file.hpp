@@ -1,7 +1,7 @@
 #ifndef BKCRACK_FILE_HPP
 #define BKCRACK_FILE_HPP
 
-#include "types.hpp"
+#include <bkcrack/types.hpp>
 
 #include <fstream>
 

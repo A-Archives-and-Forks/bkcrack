@@ -1,8 +1,8 @@
 #ifndef BKCRACK_ZIP_HPP
 #define BKCRACK_ZIP_HPP
 
-#include "Keys.hpp"
-#include "Progress.hpp"
+#include <bkcrack/Keys.hpp>
+#include <bkcrack/Progress.hpp>
 
 #include <istream>
 #include <optional>

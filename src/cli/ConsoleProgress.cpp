@@ -1,6 +1,6 @@
 #include "ConsoleProgress.hpp"
 
-#include "log.hpp"
+#include <bkcrack/log.hpp>
 
 ConsoleProgress::ConsoleProgress(std::ostream& os, const std::chrono::milliseconds& interval)
 : Progress{os}

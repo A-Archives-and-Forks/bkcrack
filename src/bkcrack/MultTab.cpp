@@ -1,4 +1,4 @@
-#include "MultTab.hpp"
+#include "bkcrack/MultTab.hpp"
 
 const MultTab MultTab::instance;
 

@@ -1,15 +1,16 @@
 #include "Arguments.hpp"
-#include "Attack.hpp"
 #include "ConsoleProgress.hpp"
-#include "Data.hpp"
 #include "SigintHandler.hpp"
 #include "VirtualTerminalSupport.hpp"
-#include "Zip.hpp"
-#include "Zreduction.hpp"
-#include "file.hpp"
-#include "log.hpp"
-#include "password.hpp"
-#include "version.hpp"
+
+#include <bkcrack/Attack.hpp>
+#include <bkcrack/Data.hpp>
+#include <bkcrack/Zip.hpp>
+#include <bkcrack/Zreduction.hpp>
+#include <bkcrack/file.hpp>
+#include <bkcrack/log.hpp>
+#include <bkcrack/password.hpp>
+#include <bkcrack/version.hpp>
 
 #include <cassert>
 #include <iomanip>

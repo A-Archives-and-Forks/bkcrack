@@ -1,9 +1,9 @@
-#include "Attack.hpp"
+#include "bkcrack/Attack.hpp"
 
-#include "Crc32Tab.hpp"
-#include "KeystreamTab.hpp"
-#include "MultTab.hpp"
-#include "log.hpp"
+#include <bkcrack/Crc32Tab.hpp>
+#include <bkcrack/KeystreamTab.hpp>
+#include <bkcrack/MultTab.hpp>
+#include <bkcrack/log.hpp>
 
 #include <algorithm>
 #include <atomic>

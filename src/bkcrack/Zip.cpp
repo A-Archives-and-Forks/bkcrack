@@ -1,7 +1,7 @@
-#include "Zip.hpp"
+#include "bkcrack/Zip.hpp"
 
-#include "Data.hpp"
-#include "file.hpp"
+#include <bkcrack/Data.hpp>
+#include <bkcrack/file.hpp>
 
 #include <algorithm>
 #include <iterator>

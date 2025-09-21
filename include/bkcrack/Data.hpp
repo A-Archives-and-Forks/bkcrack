@@ -1,7 +1,7 @@
 #ifndef BKCRACK_DATA_HPP
 #define BKCRACK_DATA_HPP
 
-#include "types.hpp"
+#include <bkcrack/types.hpp>
 
 #include <map>
 

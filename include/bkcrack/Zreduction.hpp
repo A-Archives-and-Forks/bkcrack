@@ -1,8 +1,8 @@
 #ifndef BKCRACK_ZREDUCTION_HPP
 #define BKCRACK_ZREDUCTION_HPP
 
-#include "Progress.hpp"
-#include "types.hpp"
+#include <bkcrack/Progress.hpp>
+#include <bkcrack/types.hpp>
 
 /// Generate and reduce Z values
 class Zreduction

@@ -1,6 +1,6 @@
-#include "Data.hpp"
+#include "bkcrack/Data.hpp"
 
-#include "Attack.hpp"
+#include <bkcrack/Attack.hpp>
 
 #include <algorithm>
 #include <functional>

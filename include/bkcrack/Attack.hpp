@@ -1,10 +1,10 @@
 #ifndef BKCRACK_ATTACK_HPP
 #define BKCRACK_ATTACK_HPP
 
-#include "Data.hpp"
-#include "Keys.hpp"
-#include "Progress.hpp"
-#include "types.hpp"
+#include <bkcrack/Data.hpp>
+#include <bkcrack/Keys.hpp>
+#include <bkcrack/Progress.hpp>
+#include <bkcrack/types.hpp>
 
 #include <mutex>
 

@@ -1,4 +1,4 @@
-#include "KeystreamTab.hpp"
+#include "bkcrack/KeystreamTab.hpp"
 
 const KeystreamTab KeystreamTab::instance;
 

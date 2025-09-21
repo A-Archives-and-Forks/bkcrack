@@ -1,7 +1,7 @@
 #ifndef BKCRACK_CRC32TAB_HPP
 #define BKCRACK_CRC32TAB_HPP
 
-#include "types.hpp"
+#include <bkcrack/types.hpp>
 
 /// Lookup tables for CRC32 related computations
 class Crc32Tab

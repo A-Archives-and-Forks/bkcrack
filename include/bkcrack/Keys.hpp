@@ -1,9 +1,9 @@
 #ifndef BKCRACK_KEYS_HPP
 #define BKCRACK_KEYS_HPP
 
-#include "Crc32Tab.hpp"
-#include "KeystreamTab.hpp"
-#include "MultTab.hpp"
+#include <bkcrack/Crc32Tab.hpp>
+#include <bkcrack/KeystreamTab.hpp>
+#include <bkcrack/MultTab.hpp>
 
 /// Keys defining the cipher state
 class Keys

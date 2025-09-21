@@ -1,7 +1,7 @@
 #ifndef BKCRACK_MULTTAB_HPP
 #define BKCRACK_MULTTAB_HPP
 
-#include "types.hpp"
+#include <bkcrack/types.hpp>
 
 /// Lookup tables for multiplication related computations
 class MultTab

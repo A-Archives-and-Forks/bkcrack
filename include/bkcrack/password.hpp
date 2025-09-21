@@ -1,8 +1,8 @@
 #ifndef BKCRACK_PASSWORD_HPP
 #define BKCRACK_PASSWORD_HPP
 
-#include "Keys.hpp"
-#include "Progress.hpp"
+#include <bkcrack/Keys.hpp>
+#include <bkcrack/Progress.hpp>
 
 /// \file password.hpp
 

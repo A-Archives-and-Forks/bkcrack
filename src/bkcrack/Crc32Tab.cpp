@@ -1,4 +1,4 @@
-#include "Crc32Tab.hpp"
+#include "bkcrack/Crc32Tab.hpp"
 
 const Crc32Tab Crc32Tab::instance;
 

@@ -1,7 +1,7 @@
 #ifndef BKCRACK_CONSOLEPROGRESS_HPP
 #define BKCRACK_CONSOLEPROGRESS_HPP
 
-#include "Progress.hpp"
+#include <bkcrack/Progress.hpp>
 
 #include <condition_variable>
 #include <mutex>

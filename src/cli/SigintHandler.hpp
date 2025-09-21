@@ -1,7 +1,7 @@
 #ifndef BKCRACK_SIGINTHANDLER_HPP
 #define BKCRACK_SIGINTHANDLER_HPP
 
-#include "Progress.hpp"
+#include <bkcrack/Progress.hpp>
 
 /// \brief Utility class to set a progress state to Progress::State::Canceled when SIGINT arrives
 ///
