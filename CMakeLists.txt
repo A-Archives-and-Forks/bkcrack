@@ -63,7 +63,11 @@ endif()
 # code formatting
 find_program(BKCRACK_CLANG_FORMAT_EXECUTABLE clang-format DOC "Path to clang-format program used to format C++ code.")
 if(BKCRACK_CLANG_FORMAT_EXECUTABLE)
-    get_target_property(files_to_format bkcrack SOURCES)
+    set(files_to_format "")
+    foreach(folder IN ITEMS include src tests)
+        file(GLOB_RECURSE folder_files "${folder}/*.hpp" "${folder}/*.cpp")
+        list(APPEND files_to_format ${folder_files})
+    endforeach()
     add_custom_target(format
         COMMAND ${BKCRACK_CLANG_FORMAT_EXECUTABLE} -i ${files_to_format}
         COMMENT "Formatting C++ code with ${BKCRACK_CLANG_FORMAT_EXECUTABLE}"
