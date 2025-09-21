@@ -43,8 +43,8 @@ endif()
 # code coverage report
 option(BKCRACK_BUILD_COVERAGE "Enable code coverage report generation." OFF)
 if(BKCRACK_BUILD_COVERAGE)
-    target_compile_options(bkcrack PRIVATE --coverage)
-    target_link_options(bkcrack PRIVATE --coverage)
+    target_compile_options(bkcrack-core PUBLIC --coverage)
+    target_link_options(bkcrack-core PUBLIC --coverage)
 
     find_program(BKCRACK_GCOVR_EXECUTABLE gcovr DOC "Path to gcovr program used to generate code coverage report." REQUIRED)
 
