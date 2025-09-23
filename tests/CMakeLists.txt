@@ -1,3 +1,5 @@
+add_subdirectory(runner)
+
 add_test(NAME cli.attack
     COMMAND bkcrack -C secrets.zip -c spiral.svg -x 0 3c3f786d6c2076657273696f6e3d22312e302220 --continue-attack 183500
     WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/example)
