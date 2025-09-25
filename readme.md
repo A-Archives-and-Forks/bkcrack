@@ -160,7 +160,7 @@ You can restrict the search to passwords of a given length or a range of lengths
 
 Option `-r <length> <charset>` is a shortcut for `-l 0..<length> -b <charset>`:
 
-    bkcrack -k 18f285c6 881f2169 b35d661d -r 10 ?p
+    bkcrack -k 1ded830c 24454157 7213b8c5 -r 10 ?p
 
 #### Mask-based password recovery
 
