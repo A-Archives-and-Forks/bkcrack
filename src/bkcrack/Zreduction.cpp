@@ -86,7 +86,10 @@ void Zreduction::reduce(Progress& progress)
             }
 
             if (waiting && --wait == 0)
+            {
+                progress.state = Progress::State::EarlyExit;
                 break;
+            }
         }
 
         // put result in zi_vector
