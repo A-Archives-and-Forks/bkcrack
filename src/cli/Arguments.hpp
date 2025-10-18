@@ -24,7 +24,7 @@ public:
 
     /// \brief Constructor parsing command line arguments
     /// \exception Error if an argument is not valid
-    Arguments(int argc, const char* argv[]);
+    Arguments(int argc, const char* const argv[]);
 
     /// \brief Load the data needed for an attack based on parsed arguments
     /// \exception FileError if a file cannot be opened
@@ -135,8 +135,8 @@ public:
     bool help = false;
 
 private:
-    const char**       m_current;
-    const char** const m_end;
+    const char* const*       m_current;
+    const char* const* const m_end;
 
     std::unordered_map<char, std::bitset<256>> m_charsets;
     std::unordered_map<char, std::string>      m_rawCharsets;

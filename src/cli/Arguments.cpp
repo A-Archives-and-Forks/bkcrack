@@ -88,7 +88,7 @@ Arguments::Error::Error(const std::string& description)
 {
 }
 
-Arguments::Arguments(int argc, const char* argv[])
+Arguments::Arguments(int argc, const char* const argv[])
 : jobs{[]() -> int
        {
            const auto concurrency = std::thread::hardware_concurrency();
