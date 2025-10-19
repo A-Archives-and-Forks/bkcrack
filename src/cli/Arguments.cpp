@@ -175,6 +175,9 @@ Arguments::Arguments(int argc, const char* const argv[])
         if (offset < minimumOffset)
             throw Error{"plaintext offset " + std::to_string(offset) + " is too small (minimum is " +
                         std::to_string(minimumOffset) + ")"};
+        if (!extraPlaintext.empty() && extraPlaintext.begin()->first < minimumOffset)
+            throw Error{"extra plaintext offset " + std::to_string(extraPlaintext.begin()->first) +
+                        " is too small (minimum is " + std::to_string(minimumOffset) + ")"};
     }
 
     if (decipheredFile && !cipherFile && !cipherIndex)
