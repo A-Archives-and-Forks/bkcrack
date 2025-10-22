@@ -19,3 +19,8 @@ function(bkcrack_add_unittest file)
     target_link_libraries(unittest-${name} PRIVATE bkcrack-testrunner ${ARGN})
     add_test(NAME unittest.${name} COMMAND unittest-${name})
 endfunction()
+
+# test the testing framework itself
+bkcrack_add_unittest(TestRunner-pass.test.cpp)
+bkcrack_add_unittest(TestRunner-fail.test.cpp)
+set_property(TEST unittest.testrunner-fail PROPERTY WILL_FAIL ON)
