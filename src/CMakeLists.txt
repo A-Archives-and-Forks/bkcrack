@@ -17,6 +17,9 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 # enable C++17
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_17)
 
+# enable compiler warnings
+target_enable_warnings(${PROJECT_NAME})
+
 # let CMake work out the system-specific details to use threads
 find_package(Threads REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE Threads::Threads)
