@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.19)
+cmake_minimum_required(VERSION 3.23)
 
 # project definition
 project(bkcrack
@@ -21,8 +21,11 @@ function(target_enable_warnings target)
     target_compile_options(${target} PRIVATE $<$<CXX_COMPILER_ID:Clang,AppleClang,GNU>:-Wall -Wextra -Wpedantic>)
 endfunction()
 
+# core library
+add_subdirectory(src/bkcrack)
+
 # main program
-add_subdirectory(src)
+add_subdirectory(src/cli)
 
 # documentation generation
 option(BKCRACK_BUILD_DOC "Enable documentation generation with doxygen." OFF)
