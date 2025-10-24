@@ -980,7 +980,7 @@ private:
             return -1;
 
         // Find deepest recursion level with remaining search space of given size or more
-        const auto getDepthForSize = [this](std::uint64_t size) -> std::size_t
+        const auto getDepthForSize = [this](std::uint64_t size) -> int
         {
             auto product = std::uint64_t{1};
             for (auto i = mask.size() - 6; 0 < i; --i)
@@ -992,7 +992,7 @@ private:
             return 0;
         };
 
-        const auto atomicWorkDepth = getDepthForSize(1ul << 16);
+        const auto atomicWorkDepth = getDepthForSize(1ull << 16);
 
         // not deep enough to warrant parallelization
         if (atomicWorkDepth < 2)
@@ -1000,7 +1000,7 @@ private:
 
         // Parallelizing earlier than this depth might make the program slow to stop
         // upon SIGINT or upon finding a solution.
-        const auto shallowestParallelDepth = getDepthForSize(1ul << 32);
+        const auto shallowestParallelDepth = getDepthForSize(1ull << 32);
 
         // Find two consecutive characters to be guessed in parallel, maximizing the work items count.
         auto best = std::pair{-1, std::size_t{1}};
