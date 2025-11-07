@@ -156,3 +156,9 @@ Resources {#resources}
   Python script telling which encryption method is used in a ZIP file.
 
   License: 0BSD
+
+- [pmqs/zipdetails](https://github.com/pmqs/zipdetails)
+
+  Perl script displaying details about the internal structure of ZIP files.
+
+  License: same as Perl - GNU General Public License or "Artistic License"
