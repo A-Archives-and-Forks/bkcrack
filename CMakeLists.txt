@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.19)
+cmake_minimum_required(VERSION 3.23)
 
 # project definition
 project(bkcrack
@@ -21,8 +21,11 @@ function(target_enable_warnings target)
     target_compile_options(${target} PRIVATE $<$<CXX_COMPILER_ID:Clang,AppleClang,GNU>:-Wall -Wextra -Wpedantic>)
 endfunction()
 
+# core library
+add_subdirectory(src/bkcrack)
+
 # main program
-add_subdirectory(src)
+add_subdirectory(src/cli)
 
 # documentation generation
 option(BKCRACK_BUILD_DOC "Enable documentation generation with doxygen." OFF)
@@ -40,8 +43,8 @@ endif()
 # code coverage report
 option(BKCRACK_BUILD_COVERAGE "Enable code coverage report generation." OFF)
 if(BKCRACK_BUILD_COVERAGE)
-    target_compile_options(bkcrack PRIVATE --coverage)
-    target_link_options(bkcrack PRIVATE --coverage)
+    target_compile_options(bkcrack-core PUBLIC --coverage)
+    target_link_options(bkcrack-core PUBLIC --coverage)
 
     find_program(BKCRACK_GCOVR_EXECUTABLE gcovr DOC "Path to gcovr program used to generate code coverage report." REQUIRED)
 
@@ -60,7 +63,11 @@ endif()
 # code formatting
 find_program(BKCRACK_CLANG_FORMAT_EXECUTABLE clang-format DOC "Path to clang-format program used to format C++ code.")
 if(BKCRACK_CLANG_FORMAT_EXECUTABLE)
-    get_target_property(files_to_format bkcrack SOURCES)
+    set(files_to_format "")
+    foreach(folder IN ITEMS include src tests)
+        file(GLOB_RECURSE folder_files "${folder}/*.hpp" "${folder}/*.cpp")
+        list(APPEND files_to_format ${folder_files})
+    endforeach()
     add_custom_target(format
         COMMAND ${BKCRACK_CLANG_FORMAT_EXECUTABLE} -i ${files_to_format}
         COMMENT "Formatting C++ code with ${BKCRACK_CLANG_FORMAT_EXECUTABLE}"

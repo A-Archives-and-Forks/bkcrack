@@ -2,8 +2,9 @@
 find_package(Doxygen REQUIRED)
 
 # doxygen configuration
-set(DOXYGEN_STRIP_FROM_PATH "${PROJECT_SOURCE_DIR}/include")
-set(DOXYGEN_STRIP_FROM_INC_PATH "${PROJECT_SOURCE_DIR}/include")
+set(DOXYGEN_STRIP_FROM_PATH "${PROJECT_SOURCE_DIR}")
+set(DOXYGEN_STRIP_FROM_INC_PATH "${PROJECT_SOURCE_DIR}/include;${PROJECT_SOURCE_DIR}")
+set(DOXYGEN_FILE_PATTERNS "*.hpp;*.md")
 set(DOXYGEN_QUIET "YES")
 set(DOXYGEN_SEARCHENGINE "NO")
 set(DOXYGEN_ALIASES [[limitation=\xrefitem limitations \"Known limitations\" \"Known limitations\"]])
@@ -13,6 +14,7 @@ set(DOXYGEN_DISTRIBUTE_GROUP_DOC "YES")
 doxygen_add_docs(doc ALL
     "${PROJECT_SOURCE_DIR}/doc"
     "${PROJECT_SOURCE_DIR}/include"
+    "${PROJECT_SOURCE_DIR}/src"
     "${PROJECT_SOURCE_DIR}/example"
     COMMENT "Generating HTML documentation with doxygen")
 

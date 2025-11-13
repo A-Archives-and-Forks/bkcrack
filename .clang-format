@@ -32,8 +32,12 @@ IncludeBlocks: Regroup
 IncludeCategories:
   - Regex: '".*"'
     Priority: 1
-  - Regex: '<.+>'
+  - Regex: '<bkcrack/.+>'
     Priority: 2
+  - Regex: '<TestRunner.hpp>'
+    Priority: 3
+  - Regex: '<.+>'
+    Priority: 4
 IndentWidth: 4
 PointerAlignment: Left
 ...
